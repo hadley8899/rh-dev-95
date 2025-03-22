@@ -1,0 +1,39 @@
+.marquee-container {
+    width: 100%;
+    background-color: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.win95-marquee {
+    display: flex;
+    align-items: center;
+    padding: 3px 6px;
+    white-space: nowrap;
+}
+
+.win95-marquee img {
+    margin-right: 8px;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: scroll-left 20s linear infinite;
+    padding-right: 50px;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Adjust speed on smaller screens */
+@media (max-width: 768px) {
+    .marquee-content {
+        animation: scroll-left 15s linear infinite;
+    }
+}
