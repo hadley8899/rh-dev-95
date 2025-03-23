@@ -38,7 +38,7 @@ const ScrollingFacts: React.FC = () => {
         <div className="marquee-container">
             <div className="win95-marquee">
                 <img src={infoIcon} className="icon-16" alt="info"/>
-                <div className="marquee-content">
+                <div className="marquee-content dark-text">
                     <span>{fact}</span>
                 </div>
             </div>

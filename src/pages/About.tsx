@@ -6,6 +6,7 @@ import desktopIcon from "../assets/win95.css/assets/icons/desktop-2.png";
 import timeIcon from "../assets/win95.css/assets/icons/time_and_date-0.png";
 import folderIcon from "../assets/win95.css/assets/icons/directory_folder_options-0.png";
 import oldCode from "../assets/images/old-code.jpg"
+import {Link} from "react-router-dom";
 
 const About: React.FC = () => {
     return (
@@ -40,11 +41,11 @@ const About: React.FC = () => {
                                     <h5><img src={phoneIcon} className="icon-16-4" alt=""/> Contact Information</h5>
                                     <p>Email to ask any question:</p>
                                     <div className="alert alert-primary">
-                                        contact@example.com
+                                        ryan@rh-development.co.uk
                                     </div>
-                                    <a href="/contact" className="btn btn-primary">
+                                    <Link to={`/contact`} className="btn btn-primary">
                                         <img src={desktopIcon} className="icon-16" alt=""/> Request A Quote
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -144,9 +145,9 @@ const About: React.FC = () => {
                             <li>Mobile-responsive web applications</li>
                         </ul>
                         <p>Our focus is always on creating maintainable, scalable solutions that meet our clients' business needs.</p>
-                        <a href="/contact" className="btn btn-primary">
+                        <Link to={`/contact`} className="btn btn-primary">
                             <img src={desktopIcon} className="icon-16" alt=""/> Discuss Your Project
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

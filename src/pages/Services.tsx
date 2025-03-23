@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import codeIcon from "../assets/win95.css/assets/icons/application_hourglass-0.png";
 import upgradeIcon from "../assets/win95.css/assets/icons/application_hourglass_small-0.png";
 import spaIcon from "../assets/win95.css/assets/icons/computer_explorer-0.png";
 import helpIcon from "../assets/win95.css/assets/icons/help_book_computer-0.png";
 import folderIcon from "../assets/win95.css/assets/icons/directory_folder_options-1.png";
-import oldComputer from "../assets/images/old-computer.jpeg";
-import rct from "../assets/images/rct.webp"
-import ps1 from "../assets/images/ps1.jpg";
+import oldComputer from "../assets/images/old_computer.webp"
+import internetExplorer from "../assets/images/Internet_Explorer_4.png"
+import dreamweaver from "../assets/images/dreamweaver.png"
+
 const Services: React.FC = () => {
     const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
 
@@ -33,7 +35,7 @@ const Services: React.FC = () => {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-md-4">
-                                <img src={oldComputer} className="img-fluid" alt="Web Development"/>
+                                <img src={internetExplorer} className="img-fluid" alt="Web Development"/>
                             </div>
                             <div className="col-md-8">
                                 <p>From a basic barber shop booking application to a full blown email marketing platform. We can create the application to your specification.</p>
@@ -43,7 +45,7 @@ const Services: React.FC = () => {
                                     <li>CMS development</li>
                                     <li>API development and integration</li>
                                 </ul>
-                                <a href="/contact" className="btn btn-primary">Get a Quote</a>
+                                <Link to={`/contact`} className="btn btn-primary">Get a Quote</Link>
                             </div>
                         </div>
                     </div>
@@ -68,10 +70,10 @@ const Services: React.FC = () => {
                                     <li>Performance optimization</li>
                                     <li>Security hardening</li>
                                 </ul>
-                                <a href="/contact" className="btn btn-primary">Get a Quote</a>
+                                <Link to={`/contact`} className="btn btn-primary">Get a Quote</Link>
                             </div>
                             <div className="col-md-4">
-                                <img src={rct} className="img-fluid" alt="Service Upgrades"/>
+                                <img src={dreamweaver} className="img-fluid" alt="Service Upgrades"/>
                             </div>
                         </div>
                     </div>
@@ -89,7 +91,7 @@ const Services: React.FC = () => {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-md-4">
-                                <img src={ps1} className="img-fluid" alt="SPA Development"/>
+                                <img src={oldComputer} className="img-fluid" alt="SPA Development"/>
                             </div>
                             <div className="col-md-8">
                                 <p>Whether it's an existing project or a new one, the platform can be rewritten as a single page application. These are now very popular on the web and offer many advantages:</p>
@@ -99,7 +101,7 @@ const Services: React.FC = () => {
                                     <li>Mobile app compatibility</li>
                                     <li>Reduced server load</li>
                                 </ul>
-                                <a href="/contact" className="btn btn-primary">Get a Quote</a>
+                                <Link to={`/contact`} className="btn btn-primary">Get a Quote</Link>
                             </div>
                         </div>
                     </div>
