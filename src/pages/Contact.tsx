@@ -71,7 +71,7 @@ const Contact: React.FC = () => {
             {/* Header */}
             <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                 <h1 className="display-4">Contact Us</h1>
-                <p className="lead">We would love to hear from you</p>
+                <p className="lead">Ask a question, request support or start a project</p>
             </div>
 
             <div className="container">
@@ -85,8 +85,7 @@ const Contact: React.FC = () => {
                                 </h4>
                             </div>
                             <div className="card-body">
-                                <p>We would love to hear from you! Give us a call, Email or drop us a message, and we
-                                    will be back to you asap.</p>
+                                <p>Send a message with your project details, support request or upgrade question. We will get back to you as soon as possible.</p>
 
                                 <div className="mt-3">
                                     <img src={companyIcon} className="icon-16-4" alt=""/> Company: <a

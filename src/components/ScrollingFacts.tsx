@@ -1,37 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import '../assets/ScrollingFacts.css';
 import infoIcon from "../assets/win95.css/assets/icons/msinfo32-1.png";
 
-interface FactData {
-    id: string;
-    text: string;
-    source: string;
-    source_url: string;
-    language: string;
-    permalink: string;
-}
+const messages = [
+    'Legacy PHP upgrade? RH Development can help plan a careful route forward.',
+    'Need a faster web app? Start with bottlenecks, hosting, database queries and frontend payloads.',
+    'Project Park Tycoon turns scope, support and risk into a quick visual planning tool.',
+    'A good migration keeps the business running while the old system is improved.',
+    'Use the Setup Wizard to sketch out the kind of application, hosting and support you need.',
+];
 
 const ScrollingFacts: React.FC = () => {
-    const [fact, setFact] = useState<string>('Loading random fact...');
-
-    const fetchRandomFact = async () => {
-        try {
-            const response = await axios.get<FactData>('https://uselessfacts.jsph.pl/api/v2/facts/random');
-            setFact(response.data.text);
-        } catch (error) {
-            console.error('Error fetching random fact:', error);
-            setFact('Error loading fact. Please try again later.');
-        }
-    };
+    const [messageIndex, setMessageIndex] = useState(0);
 
     useEffect(() => {
-        fetchRandomFact().then(() => {});
+        const intervalId = window.setInterval(() => {
+            setMessageIndex((currentIndex) => (currentIndex + 1) % messages.length);
+        }, 12000);
 
-        // Fetch a new fact every 30 seconds
-        const intervalId = setInterval(fetchRandomFact, 60000);
-
-        return () => clearInterval(intervalId);
+        return () => window.clearInterval(intervalId);
     }, []);
 
     return (
@@ -39,7 +26,7 @@ const ScrollingFacts: React.FC = () => {
             <div className="win95-marquee">
                 <img src={infoIcon} className="icon-16" alt="info"/>
                 <div className="marquee-content dark-text">
-                    <span>{fact}</span>
+                    <span>{messages[messageIndex]}</span>
                 </div>
             </div>
         </div>

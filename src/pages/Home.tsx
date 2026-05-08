@@ -1,275 +1,143 @@
-import React, {useState, useEffect} from 'react';
-import computerIcon from "../assets/win95.css/assets/icons/computer-3.png";
-import internetIcon from "../assets/win95.css/assets/icons/internet_connection_wiz-5.png";
-import databaseIcon from "../assets/win95.css/assets/icons/directory_open_file_mydocs-4.png";
-import serverIcon from "../assets/win95.css/assets/icons/search_server-1.png";
-import techIcon from "../assets/images/computer_lab.webp";
-import mailIcon from "../assets/win95.css/assets/icons/envelope_closed-0.png";
-import webIcon from "../assets/win95.css/assets/icons/world-0.png";
-import DraggableWindow from '../components/DraggableWindow';
-import WindowManager from '../components/WindowManager';
-import {Link} from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import computerIcon from '../assets/win95.css/assets/icons/computer-3.png';
+import internetIcon from '../assets/win95.css/assets/icons/internet_connection_wiz-5.png';
+import databaseIcon from '../assets/win95.css/assets/icons/directory_open_file_mydocs-4.png';
+import serverIcon from '../assets/win95.css/assets/icons/search_server-1.png';
+import webIcon from '../assets/win95.css/assets/icons/world-0.png';
+import mailIcon from '../assets/win95.css/assets/icons/envelope_closed-0.png';
+import joystickIcon from '../assets/win95.css/assets/icons/joystick-0.png';
+import cdIcon from '../assets/win95.css/assets/icons/cd_drive-0.png';
+import helpIcon from '../assets/win95.css/assets/icons/help_book_computer-0.png';
+import paintIcon from '../assets/win95.css/assets/icons/paint_old-0.png';
+import techIcon from '../assets/images/computer_lab.webp';
+import rctImage from '../assets/images/rct.webp';
+
+const services = [
+    {
+        title: 'Web Interfaces',
+        icon: computerIcon,
+        text: 'React, Angular, Vue and responsive browser interfaces.',
+    },
+    {
+        title: 'Backend Development',
+        icon: databaseIcon,
+        text: 'PHP, Laravel, APIs, migrations and reliable server-side systems.',
+    },
+    {
+        title: 'Server / Hosting',
+        icon: serverIcon,
+        text: 'Server setup, hardening, performance tuning and hosting support.',
+    },
+];
+
+const retroIdeas = [
+    {
+        title: 'Project Park Tycoon',
+        icon: joystickIcon,
+        text: 'Plan your project like a theme park: features become attractions, support work keeps things running, and the report shows delivery health.',
+    },
+    {
+        title: 'Help Lab',
+        icon: helpIcon,
+        text: 'Clear, plain-English answers for common web app, hosting and upgrade questions.',
+    },
+    {
+        title: 'Windows 98 Setup Wizard',
+        icon: cdIcon,
+        text: 'Choose the kind of application, hosting and support you need, then turn those choices into a project brief.',
+    },
+];
 
 const Home: React.FC = () => {
-    const [windows, setWindows] = useState({
-        webInterfaces: true,
-        backendDev: true,
-        serverHosting: true,
-        webDev: true,
-        getInTouch: true
-    });
-
-    const [isMobile, setIsMobile] = useState(false);
-
-    // Check if device is mobile
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    const closeWindow = (windowName: string) => {
-        setWindows(prev => ({
-            ...prev,
-            [windowName]: false
-        }));
-    };
-
-    // Mobile layout
-    const MobileLayout = () => (
-        <>
-            {/* Web Development Services Card */}
-            <div className="container mb-4">
-                <div className="card">
-                    <div className="card-header">
-                        <h4 className="my-0 font-weight-normal">
-                            <img src={webIcon} className="icon-16" alt=""/> Web Development Services
-                        </h4>
-                    </div>
-                    <div className="card-body">
-                        <ul className="list-unstyled mt-3 mb-4">
-                            <li>Frontend UI development</li>
-                            <li>Backend API systems</li>
-                            <li>PHP upgrades to latest versions</li>
-                            <li>Server setup and hardening</li>
-                            <li>Fast and professional service</li>
-                        </ul>
-                        <Link to={`/contact`} className="btn btn-primary">
-                            <img src={internetIcon} className="icon-16" alt=""/> Contact Us
-                        </Link>
-                    </div>
-                </div>
-            </div>
-
-            {/* Services Cards */}
-            <div className="container mb-4">
-                <div className="card mb-4">
-                    <div className="card-header">
-                        <h4 className="my-0 font-weight-normal">
-                            <img src={computerIcon} className="icon-16" alt=""/> Web Interfaces
-                        </h4>
-                    </div>
-                    <div className="card-body">
-                        <ul className="list-unstyled mt-3 mb-4">
-                            <li>React development</li>
-                            <li>Angular 2+ applications</li>
-                            <li>Vue.js interfaces</li>
-                            <li>Responsive design</li>
-                        </ul>
-                        <Link to={`/services`} className="btn btn-primary">See Services</Link>
-                    </div>
-                </div>
-
-                <div className="card mb-4">
-                    <div className="card-header">
-                        <h4 className="my-0 font-weight-normal">
-                            <img src={databaseIcon} className="icon-16" alt=""/> Backend Development
-                        </h4>
-                    </div>
-                    <div className="card-body">
-                        <ul className="list-unstyled mt-3 mb-4">
-                            <li>PHP specialist</li>
-                            <li>Laravel/Lumen frameworks</li>
-                            <li>Code upgrades and fixes</li>
-                            <li>API development</li>
-                        </ul>
-                        <Link to={`/services`} className="btn btn-primary">See Services</Link>
-                    </div>
-                </div>
-
-                <div className="card mb-4">
-                    <div className="card-header">
-                        <h4 className="my-0 font-weight-normal">
-                            <img src={serverIcon} className="icon-16" alt=""/> Server/Hosting
-                        </h4>
-                    </div>
-                    <div className="card-body">
-                        <ul className="list-unstyled mt-3 mb-4">
-                            <li>Server setup</li>
-                            <li>Security hardening</li>
-                            <li>Performance optimization</li>
-                            <li>Reliable hosting</li>
-                        </ul>
-                        <Link to={`/services`} className="btn btn-primary">See Services</Link>
-                    </div>
-                </div>
-            </div>
-
-            {/* Get In Touch */}
-            <div className="container mb-4">
-                <div className="card">
-                    <div className="card-header">
-                        <h4 className="my-0 font-weight-normal">
-                            <img src={mailIcon} className="icon-16" alt=""/> Get In Touch
-                        </h4>
-                    </div>
-                    <div className="card-body text-center">
-                        <h5>Do you need a hand? Looking for some advice?</h5>
-                        <p>Maybe a quote for some work? Don't hesitate to send a message or give me a call</p>
-                        <Link to={`/services`} className="btn btn-primary">
-                            <img src={internetIcon} className="icon-16" alt=""/> Contact Now
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
-
     return (
-        <>
-            {/* Header */}
-            <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-                <h1 className="display-4">RH Development</h1>
-                <p className="lead">Everything from API systems using PHP to building user interfaces using React.
-                    Server upgrades and hosting available.</p>
-            </div>
-
-            {/* Main banner section */}
-            <div className="container mb-5">
-                <div className="row">
-                    <div className="col-md-8 text-center">
-                        <img src={techIcon} className="img-fluid" alt="Code AI"/>
+        <div className="home-program">
+            <section className="home-hero-panel">
+                <div className="home-hero-copy">
+                    <div className="home-kicker">
+                        <img src={webIcon} className="icon-16" alt="" />
+                        RH Development for Windows 98
+                    </div>
+                    <h1>Web apps, upgrades and hosting without the mystery.</h1>
+                    <p>
+                        Everything from PHP API systems to React interfaces, legacy upgrades,
+                        server hardening and practical hosting advice.
+                    </p>
+                    <div className="home-actions">
+                        <Link to="/services" className="btn btn-primary">
+                            <img src={internetIcon} className="icon-16" alt="" /> Browse Services
+                        </Link>
+                        <Link to="/contact" className="btn btn-primary">
+                            <img src={mailIcon} className="icon-16" alt="" /> Contact
+                        </Link>
                     </div>
                 </div>
-            </div>
+                <div className="home-hero-media">
+                    <img src={techIcon} alt="Retro computer lab" />
+                    <div className="home-media-caption">
+                        C:\RHDEV\PROJECTS\READY
+                    </div>
+                </div>
+            </section>
 
-            {/* Conditionally render based on device */}
-            {isMobile ? (
-                <MobileLayout/>
-            ) : (
-                <WindowManager>
-                    {/* Web Development Services Window */}
-                    {windows.webDev && (
-                        <DraggableWindow
-                            id="web-dev-services"
-                            title="Web Development Services"
-                            icon={webIcon}
-                            initialPosition={{x: 600, y: 80}}
-                            onClose={() => closeWindow('webDev')}
-                        >
-                            <div className="card-body draggable-card-body">
-                                <ul className="list-unstyled mt-3 mb-4">
-                                    <li>Frontend UI development</li>
-                                    <li>Backend API systems</li>
-                                    <li>PHP upgrades to latest versions</li>
-                                    <li>Server setup and hardening</li>
-                                    <li>Fast and professional service</li>
-                                </ul>
-                                <Link to={`/services`} className="btn btn-primary">
-                                    <img src={internetIcon} className="icon-16" alt=""/> Contact Us
-                                </Link>
-                            </div>
-                        </DraggableWindow>
-                    )}
+            <section className="home-section">
+                <div className="home-section-title">
+                    <img src={computerIcon} className="icon-16" alt="" />
+                    Program Shortcuts
+                </div>
+                <div className="home-service-grid">
+                    {services.map((service) => (
+                        <article className="home-service-card" key={service.title}>
+                            <img src={service.icon} alt="" />
+                            <h2>{service.title}</h2>
+                            <p>{service.text}</p>
+                        </article>
+                    ))}
+                </div>
+            </section>
 
-                    {windows.webInterfaces && (
-                        <DraggableWindow
-                            id="web-interfaces"
-                            title="Web Interfaces"
-                            icon={computerIcon}
-                            initialPosition={{x: 50, y: 80}}
-                            onClose={() => closeWindow('webInterfaces')}
-                        >
-                            <div className="card-body draggable-card-body">
-                                <img src={computerIcon} alt="Computer Icon" className="mb-3"/>
-                                <ul className="list-unstyled mt-3 mb-4">
-                                    <li>React development</li>
-                                    <li>Angular 2+ applications</li>
-                                    <li>Vue.js interfaces</li>
-                                    <li>Responsive design</li>
-                                </ul>
-                                <Link to={`/services`} className="btn btn-primary">See Services</Link>
-                            </div>
-                        </DraggableWindow>
-                    )}
+            <section className="home-retro-grid">
+                <article className="home-rct-panel">
+                    <div className="home-section-title">
+                        <img src={joystickIcon} className="icon-16" alt="" />
+                        RollerCoaster Tycoon Mode
+                    </div>
+                    <img src={rctImage} alt="RollerCoaster Tycoon screenshot" />
+                    <p>
+                        Open Project Park Tycoon from the Games folder to explore project scope in a more visual way:
+                        features, support work and delivery risk are presented like a classic management game.
+                    </p>
+                </article>
 
-                    {windows.backendDev && (
-                        <DraggableWindow
-                            id="backend-dev"
-                            title="Backend Development"
-                            icon={databaseIcon}
-                            initialPosition={{x: 400, y: 140}}
-                            onClose={() => closeWindow('backendDev')}
-                        >
-                            <div className="card-body draggable-card-body">
-                                <img src={databaseIcon} alt="Database Icon" className="mb-3"/>
-                                <ul className="list-unstyled mt-3 mb-4">
-                                    <li>PHP specialist</li>
-                                    <li>Laravel/Lumen frameworks</li>
-                                    <li>Code upgrades and fixes</li>
-                                    <li>API development</li>
-                                </ul>
-                                <Link to={`/services`} className="btn btn-primary">See Services</Link>
+                <article className="home-ideas-panel">
+                    <div className="home-section-title">
+                        <img src={paintIcon} className="icon-16" alt="" />
+                        Interactive Planning Tools
+                    </div>
+                    <div className="home-idea-list">
+                        {retroIdeas.map((idea) => (
+                            <div className="home-idea" key={idea.title}>
+                                <img src={idea.icon} alt="" />
+                                <div>
+                                    <h3>{idea.title}</h3>
+                                    <p>{idea.text}</p>
+                                </div>
                             </div>
-                        </DraggableWindow>
-                    )}
+                        ))}
+                    </div>
+                </article>
+            </section>
 
-                    {windows.serverHosting && (
-                        <DraggableWindow
-                            id="server-hosting"
-                            title="Server/Hosting"
-                            icon={serverIcon}
-                            initialPosition={{x: 100, y: 300}}
-                            onClose={() => closeWindow('serverHosting')}
-                        >
-                            <div className="card-body draggable-card-body">
-                                <img src={serverIcon} alt="Server Icon" className="mb-3"/>
-                                <ul className="list-unstyled mt-3 mb-4">
-                                    <li>Server setup</li>
-                                    <li>Security hardening</li>
-                                    <li>Performance optimization</li>
-                                    <li>Reliable hosting</li>
-                                </ul>
-                                <Link to={`/services`} className="btn btn-primary">See Services</Link>
-                            </div>
-                        </DraggableWindow>
-                    )}
-
-                    {/* Get In Touch Window */}
-                    {windows.getInTouch && (
-                        <DraggableWindow
-                            id="get-in-touch"
-                            title="Get In Touch"
-                            icon={mailIcon}
-                            initialPosition={{x: 500, y: 300}}
-                            onClose={() => closeWindow('getInTouch')}
-                        >
-                            <div className="card-body draggable-card-body text-center">
-                                <h5>Do you need a hand? Looking for some advice?</h5>
-                                <p>Maybe a quote for some work? Don't hesitate to send a message or give me a call</p>
-                                <Link to={`/services`} className="btn btn-primary">
-                                    <img src={internetIcon} className="icon-16" alt=""/> Contact Now
-                                </Link>
-                            </div>
-                        </DraggableWindow>
-                    )}
-                </WindowManager>
-            )}
-        </>
+            <section className="home-status-panel">
+                <div>
+                    <strong>New here?</strong> Open the Games folder for interactive project planning tools, or go
+                    straight to Services to see how RH Development can help.
+                </div>
+                <Link to="/contact" className="btn btn-primary">
+                    <img src={mailIcon} className="icon-16" alt="" /> Start A Project
+                </Link>
+            </section>
+        </div>
     );
 };
 

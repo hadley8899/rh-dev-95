@@ -21,7 +21,7 @@ const Services: React.FC = () => {
             {/* Header */}
             <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                 <h1 className="display-4">Services</h1>
-                <p className="lead">See what we have to offer</p>
+                <p className="lead">Web applications, upgrades and hosting support</p>
             </div>
 
             {/* Web Application Development */}
@@ -38,7 +38,7 @@ const Services: React.FC = () => {
                                 <img src={internetExplorer} className="img-fluid" alt="Web Development"/>
                             </div>
                             <div className="col-md-8">
-                                <p>From a basic barber shop booking application to a full blown email marketing platform. We can create the application to your specification.</p>
+                                <p>From booking systems to customer portals and marketing platforms, applications are planned around your workflow and business goals.</p>
                                 <ul>
                                     <li>Custom web applications</li>
                                     <li>E-commerce solutions</li>
@@ -63,7 +63,7 @@ const Services: React.FC = () => {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-md-8">
-                                <p>From changing hosting providers to upgrading from PHP &lt; 7 to the latest version. See great benefits from upgrading to PHP8.</p>
+                                <p>Older applications can often be made faster, safer and easier to host through careful upgrades and migrations.</p>
                                 <ul>
                                     <li>PHP version upgrades</li>
                                     <li>Framework migrations</li>
@@ -94,7 +94,7 @@ const Services: React.FC = () => {
                                 <img src={oldComputer} className="img-fluid" alt="SPA Development"/>
                             </div>
                             <div className="col-md-8">
-                                <p>Whether it's an existing project or a new one, the platform can be rewritten as a single page application. These are now very popular on the web and offer many advantages:</p>
+                                <p>For app-like workflows, a single page application can make the interface faster, smoother and easier to use.</p>
                                 <ul>
                                     <li>Improved application speed</li>
                                     <li>Better user experience</li>
@@ -163,7 +163,7 @@ const Services: React.FC = () => {
                             </div>
                             {activeAccordion === 2 && (
                                 <div className="card-body">
-                                    While we're not WordPress specialists, we can create WordPress websites to meet your needs. We also offer security checks for existing WordPress installations and can repair compromised WordPress sites with proper hosting access.
+                                    Yes. WordPress projects can be reviewed, secured, repaired or rebuilt depending on what the site needs.
                                 </div>
                             )}
                         </div>
@@ -176,11 +176,11 @@ const Services: React.FC = () => {
                                 style={{ cursor: 'pointer' }}
                             >
                                 <img src={folderIcon} className="icon-16" alt=""/>
-                                <span> Do you have any job openings?</span>
+                                <span> Can you work with my existing hosting?</span>
                             </div>
                             {activeAccordion === 3 && (
                                 <div className="card-body">
-                                    We are not currently hiring, but feel free to send your resume for future consideration.
+                                    Yes. Existing hosting can be reviewed first, then improved, migrated or replaced only when there is a clear reason.
                                 </div>
                             )}
                         </div>
@@ -197,7 +197,7 @@ const Services: React.FC = () => {
                             </div>
                             {activeAccordion === 4 && (
                                 <div className="card-body">
-                                    Yes, we can migrate your application to AWS and help set up the appropriate infrastructure for your needs.
+                                    Yes. Applications can be migrated to AWS with infrastructure chosen around traffic, reliability and budget.
                                 </div>
                             )}
                         </div>

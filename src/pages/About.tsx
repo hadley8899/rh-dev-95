@@ -14,7 +14,7 @@ const About: React.FC = () => {
             {/* Header */}
             <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                 <h1 className="display-4">About Us</h1>
-                <p className="lead">Web app development with over 10 years of experience</p>
+                <p className="lead">Practical web app development with over 10 years of experience</p>
             </div>
 
             {/* Main about section */}
@@ -28,18 +28,18 @@ const About: React.FC = () => {
                                 </h4>
                             </div>
                             <div className="card-body windows-scrollbar">
-                                <p>We use all the latest technologies when developing applications. Currently the popular tech stack for a web application is:</p>
+                                <p>RH Development builds and maintains web applications with dependable, well-supported technology. Typical projects use:</p>
                                 <ul>
                                     <li>React/Angular frontend</li>
                                     <li>PHP (Laravel) backend</li>
                                     <li>MySQL/MariaDB database</li>
                                 </ul>
-                                <p>We are very happy to work on legacy codebases bringing them up to latest versions or complete application rewrites.</p>
-                                <p>All applications created by us can easily be converted into mobile applications and released on app stores.</p>
+                                <p>Existing legacy systems can be upgraded, stabilised or rewritten in sensible stages.</p>
+                                <p>Applications can also be designed with mobile use in mind, including a path toward app-store releases where that makes commercial sense.</p>
 
                                 <div className="mt-4">
                                     <h5><img src={phoneIcon} className="icon-16-4" alt=""/> Contact Information</h5>
-                                    <p>Email to ask any question:</p>
+                                    <p>Email with questions, project details or support requests:</p>
                                     <div className="alert alert-primary">
                                         ryan@rh-development.co.uk
                                     </div>
@@ -59,13 +59,13 @@ const About: React.FC = () => {
                             </div>
                             <div className="card-body">
                                 <img src={oldCode} className="img-fluid mb-4" alt="Coding"/>
-                                <h5>What makes us different?</h5>
+                                <h5>What clients can expect</h5>
                                 <ul className="list-unstyled">
-                                    <li>✓ Modern technologies</li>
-                                    <li>✓ Responsive design</li>
-                                    <li>✓ Clean, maintainable code</li>
-                                    <li>✓ Excellent communication</li>
-                                    <li>✓ Timely delivery</li>
+                                    <li>Modern, maintainable technology choices</li>
+                                    <li>Responsive interfaces for desktop and mobile</li>
+                                    <li>Clear communication during the work</li>
+                                    <li>Careful handling of legacy systems</li>
+                                    <li>Practical advice before unnecessary rebuilds</li>
                                 </ul>
                             </div>
                         </div>
@@ -136,7 +136,7 @@ const About: React.FC = () => {
                         </h4>
                     </div>
                     <div className="card-body">
-                        <p>With over a decade of experience in web development, we've successfully delivered projects including:</p>
+                        <p>Project experience includes:</p>
                         <ul>
                             <li>E-commerce platforms</li>
                             <li>Content management systems</li>
@@ -144,7 +144,7 @@ const About: React.FC = () => {
                             <li>Legacy application modernization</li>
                             <li>Mobile-responsive web applications</li>
                         </ul>
-                        <p>Our focus is always on creating maintainable, scalable solutions that meet our clients' business needs.</p>
+                        <p>The focus is maintainable, scalable software that supports the way your business actually works.</p>
                         <Link to={`/contact`} className="btn btn-primary">
                             <img src={desktopIcon} className="icon-16" alt=""/> Discuss Your Project
                         </Link>
