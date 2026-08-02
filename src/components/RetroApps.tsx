@@ -7,6 +7,13 @@ import wizardIcon from '../assets/win95.css/assets/icons/appwizard-1.png';
 import rideIcon from '../assets/win95.css/assets/icons/tree-1.png';
 import fixIcon from '../assets/win95.css/assets/icons/gears-1.png';
 import guestIcon from '../assets/win95.css/assets/icons/users-1.png';
+import imageIcon from '../assets/win95.css/assets/icons/kodak_imaging-0.png';
+import garageIcon from '../assets/win95.css/assets/icons/tools_gear-0.png';
+import videoIcon from '../assets/win95.css/assets/icons/camera3_vid-0.png';
+import carIcon from '../assets/win95.css/assets/icons/hardware-0.png';
+import trafficIcon from '../assets/win95.css/assets/icons/globe_map-0.png';
+import campaignIcon from '../assets/win95.css/assets/icons/mailbox_world-0.png';
+import pulseIcon from '../assets/win95.css/assets/icons/monitor_application.png';
 
 type RetroAppId = 'projectPark' | 'helpLab' | 'setupWizard';
 
@@ -32,6 +39,51 @@ const games = [
         title: 'Install New Website Wizard',
         icon: wizardIcon,
         description: 'Choose your project type, hosting and support to build a useful brief.',
+    },
+];
+
+const tools = [
+    {
+        title: 'Image Trainer',
+        url: 'https://image-trainer.rh-development.co.uk/',
+        icon: imageIcon,
+        description: 'Prepare and train image-based projects in the browser.',
+    },
+    {
+        title: 'GarageArc',
+        url: 'https://garagearc.co.uk/',
+        icon: garageIcon,
+        description: 'Garage management software for independent UK garages.',
+    },
+    {
+        title: 'Video GPS',
+        url: 'https://video-gps.rh-development.co.uk/',
+        icon: videoIcon,
+        description: 'Work with video and GPS data together.',
+    },
+    {
+        title: 'Car Rant',
+        url: 'https://app.car-rant.co.uk/',
+        icon: carIcon,
+        description: 'Open the Car Rant web application.',
+    },
+    {
+        title: 'Traffic',
+        url: 'https://traffic.rh-development.co.uk/',
+        icon: trafficIcon,
+        description: 'View the RH Development traffic tool.',
+    },
+    {
+        title: 'Campaign Craft',
+        url: 'https://campaign-craft.rh-development.co.uk/',
+        icon: campaignIcon,
+        description: 'Build and manage campaigns from the browser.',
+    },
+    {
+        title: 'PulseGuard',
+        url: 'https://pulseguard.rh-development.co.uk/',
+        icon: pulseIcon,
+        description: 'Monitor services and keep an eye on their health.',
     },
 ];
 
@@ -88,6 +140,36 @@ function GamesFolder({ onOpen }: GamesFolderProps) {
             <div className="retro-folder-note">
                 <img src={folderIcon} alt="" />
                 <span>Open a tool to explore your project in a more visual way.</span>
+            </div>
+        </div>
+    );
+}
+
+function ToolsFolder() {
+    return (
+        <div className="retro-folder">
+            <div className="retro-folder-address">
+                <span>Address</span>
+                <div>C:\RHDEV\TOOLS</div>
+            </div>
+            <div className="retro-folder-grid">
+                {tools.map((tool) => (
+                    <a
+                        className="retro-folder-item"
+                        href={tool.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        key={tool.url}
+                    >
+                        <img src={tool.icon} alt="" />
+                        <span>{tool.title}</span>
+                        <small>{tool.description}</small>
+                    </a>
+                ))}
+            </div>
+            <div className="retro-folder-note">
+                <img src={folderIcon} alt="" />
+                <span>These tools open in a new browser tab.</span>
             </div>
         </div>
     );
@@ -315,5 +397,5 @@ function WizardOptions({
     );
 }
 
-export { GamesFolder, HelpLab, ProjectPark, SetupWizard };
+export { GamesFolder, HelpLab, ProjectPark, SetupWizard, ToolsFolder };
 export type { RetroAppId };

@@ -5,7 +5,7 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Services from '../pages/Services';
 import Contact from '../pages/Contact';
-import { GamesFolder, HelpLab, ProjectPark, RetroAppId, SetupWizard } from './RetroApps';
+import { GamesFolder, HelpLab, ProjectPark, RetroAppId, SetupWizard, ToolsFolder } from './RetroApps';
 import computerIcon from '../assets/win95.css/assets/icons/computer-3.png';
 import myComputerIcon from '../assets/win95.css/assets/icons/computer_explorer-1.png';
 import networkIcon from '../assets/win95.css/assets/icons/network_normal_two_pcs-0.png';
@@ -19,8 +19,9 @@ import shutdownIcon from '../assets/win95.css/assets/icons/shut_down_cool-0.png'
 import gamesIcon from '../assets/win95.css/assets/icons/directory_closed_cool-5.png';
 import joystickIcon from '../assets/win95.css/assets/icons/joystick-0.png';
 import wizardIcon from '../assets/win95.css/assets/icons/appwizard-1.png';
+import toolsIcon from '../assets/win95.css/assets/icons/directory_admin_tools-5.png';
 
-type PageId = 'home' | 'about' | 'services' | 'contact' | 'games' | RetroAppId;
+type PageId = 'home' | 'about' | 'services' | 'contact' | 'games' | 'tools' | RetroAppId;
 
 interface PageConfig {
     id: PageId;
@@ -101,6 +102,14 @@ const pages: PageConfig[] = [
         initialSize: { width: 620, height: 430 },
     },
     {
+        id: 'tools',
+        label: 'Tools',
+        path: '/tools',
+        icon: toolsIcon,
+        initialPosition: { x: 166, y: 96 },
+        initialSize: { width: 820, height: 620 },
+    },
+    {
         id: 'projectPark',
         label: 'Project Park Tycoon',
         path: '/project-park',
@@ -131,6 +140,7 @@ const desktopIcons = [
     { label: 'Network', pageId: 'services' as PageId, icon: networkIcon },
     { label: 'Internet Explorer', pageId: 'home' as PageId, icon: internetIcon },
     { label: 'Games', pageId: 'games' as PageId, icon: gamesIcon },
+    { label: 'Tools', pageId: 'tools' as PageId, icon: toolsIcon },
     { label: 'Services', pageId: 'services' as PageId, icon: servicesIcon },
     { label: 'Contact', pageId: 'contact' as PageId, icon: contactIcon },
     { label: 'Recycle Bin', pageId: 'about' as PageId, icon: recycleIcon },
@@ -340,6 +350,8 @@ function DesktopShell() {
                 return <Contact />;
             case 'games':
                 return <GamesFolder onOpen={(id) => openWindow(id)} />;
+            case 'tools':
+                return <ToolsFolder />;
             case 'projectPark':
                 return <ProjectPark />;
             case 'helpLab':

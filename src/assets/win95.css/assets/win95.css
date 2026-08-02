@@ -1274,6 +1274,7 @@ RETRO MINI APPS
 
 .retro-folder-item {
     min-height: 170px;
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
