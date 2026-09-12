@@ -839,6 +839,45 @@ RH DEVELOPMENT DESKTOP SHELL
     color: #212529;
 }
 
+.program-content-game {
+    overflow: hidden;
+    padding: 0;
+}
+
+.code-tycoon-embed {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: #10151b;
+}
+
+.code-tycoon-toolbar {
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px 8px;
+    color: #212529;
+    background: silver;
+    border-bottom: 1px solid #808080;
+}
+
+.code-tycoon-toolbar a {
+    flex: 0 0 auto;
+    color: #000080;
+    text-decoration: underline;
+}
+
+.code-tycoon-embed iframe {
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    border: 0;
+    background: #10151b;
+}
+
 .program-status-bar {
     display: grid;
     grid-template-columns: 1fr minmax(120px, 200px);
@@ -1655,6 +1694,18 @@ RETRO MINI APPS
 
     .program-content {
         padding: 8px;
+    }
+
+    .program-content-game {
+        padding: 0;
+    }
+
+    .code-tycoon-toolbar span {
+        display: none;
+    }
+
+    .code-tycoon-toolbar {
+        justify-content: flex-end;
     }
 
     .program-status-bar {

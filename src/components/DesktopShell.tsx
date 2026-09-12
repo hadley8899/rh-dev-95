@@ -5,7 +5,7 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Services from '../pages/Services';
 import Contact from '../pages/Contact';
-import { GamesFolder, HelpLab, ProjectPark, RetroAppId, SetupWizard, ToolsFolder } from './RetroApps';
+import { CodeTycoon, GamesFolder, HelpLab, ProjectPark, RetroAppId, SetupWizard, ToolsFolder } from './RetroApps';
 import computerIcon from '../assets/win95.css/assets/icons/computer-3.png';
 import myComputerIcon from '../assets/win95.css/assets/icons/computer_explorer-1.png';
 import networkIcon from '../assets/win95.css/assets/icons/network_normal_two_pcs-0.png';
@@ -18,6 +18,7 @@ import helpIcon from '../assets/win95.css/assets/icons/help_book_cool-1.png';
 import shutdownIcon from '../assets/win95.css/assets/icons/shut_down_cool-0.png';
 import gamesIcon from '../assets/win95.css/assets/icons/directory_closed_cool-5.png';
 import joystickIcon from '../assets/win95.css/assets/icons/joystick-0.png';
+import codeTycoonIcon from '../assets/win95.css/assets/icons/game_spider-0.png';
 import wizardIcon from '../assets/win95.css/assets/icons/appwizard-1.png';
 import toolsIcon from '../assets/win95.css/assets/icons/directory_admin_tools-5.png';
 
@@ -118,6 +119,14 @@ const pages: PageConfig[] = [
         initialSize: { width: 820, height: 620 },
     },
     {
+        id: 'codeTycoon',
+        label: 'Code Tycoon',
+        path: '/code-tycoon',
+        icon: codeTycoonIcon,
+        initialPosition: { x: 104, y: 0 },
+        initialSize: { width: 1180, height: 760 },
+    },
+    {
         id: 'helpLab',
         label: 'Help Lab',
         path: '/help-lab',
@@ -146,22 +155,25 @@ const desktopIcons = [
     { label: 'Recycle Bin', pageId: 'about' as PageId, icon: recycleIcon },
 ];
 
-const getInitialWindows = (): WindowState[] =>
-    pages.map((page, index) => ({
+const getInitialWindows = (pathname: string): WindowState[] => {
+    const initialPage = pages.find((page) => page.path === pathname)?.id ?? 'home';
+
+    return pages.map((page, index) => ({
         id: page.id,
-        isOpen: page.id === 'home',
+        isOpen: page.id === initialPage,
         isMinimized: false,
         zIndex: 100 + index,
         position: page.initialPosition,
         size: page.initialSize,
     }));
+};
 
 function DesktopShell() {
     const location = useLocation();
     const navigate = useNavigate();
     const [isStartOpen, setIsStartOpen] = useState(false);
     const [time, setTime] = useState(() => new Date());
-    const [windows, setWindows] = useState<WindowState[]>(getInitialWindows);
+    const [windows, setWindows] = useState<WindowState[]>(() => getInitialWindows(location.pathname));
     const [, setTopZIndex] = useState(110);
     const [dragState, setDragState] = useState<DragState | null>(null);
 
@@ -193,18 +205,24 @@ function DesktopShell() {
             setIsStartOpen(false);
             setTopZIndex((currentZIndex) => {
                 const nextZIndex = currentZIndex + 1;
-                setWindows((currentWindows) =>
-                    currentWindows.map((windowState) =>
-                        windowState.id === id
-                            ? {
-                                  ...windowState,
-                                  isOpen: true,
-                                  isMinimized: false,
-                                  zIndex: nextZIndex,
-                              }
-                            : windowState,
-                    ),
-                );
+                setWindows((currentWindows) => {
+                    const shouldPrioritiseGame = id === 'codeTycoon' && window.innerWidth <= 900;
+
+                    return currentWindows.map((windowState) => {
+                        if (windowState.id === id) {
+                            return {
+                                ...windowState,
+                                isOpen: true,
+                                isMinimized: false,
+                                zIndex: nextZIndex,
+                            };
+                        }
+
+                        return shouldPrioritiseGame && windowState.isOpen
+                            ? { ...windowState, isMinimized: true }
+                            : windowState;
+                    });
+                });
                 return nextZIndex;
             });
 
@@ -354,6 +372,8 @@ function DesktopShell() {
                 return <ToolsFolder />;
             case 'projectPark':
                 return <ProjectPark />;
+            case 'codeTycoon':
+                return <CodeTycoon />;
             case 'helpLab':
                 return <HelpLab />;
             case 'setupWizard':
@@ -438,8 +458,8 @@ function DesktopShell() {
                                 ))}
                                 <span>Help</span>
                             </nav>
-                            <div className="program-content">
-                                <ScrollingFacts />
+                            <div className={`program-content ${page.id === 'codeTycoon' ? 'program-content-game' : ''}`}>
+                                {page.id !== 'codeTycoon' && <ScrollingFacts />}
                                 {renderPageContent(page)}
                             </div>
                             <div className="program-status-bar">

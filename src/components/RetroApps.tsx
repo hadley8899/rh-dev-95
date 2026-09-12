@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import rctImage from '../assets/images/rct.webp';
 import folderIcon from '../assets/win95.css/assets/icons/directory_closed_cool-5.png';
 import joystickIcon from '../assets/win95.css/assets/icons/joystick-0.png';
+import codeTycoonIcon from '../assets/win95.css/assets/icons/game_spider-0.png';
 import helpIcon from '../assets/win95.css/assets/icons/help_book_computer-0.png';
 import wizardIcon from '../assets/win95.css/assets/icons/appwizard-1.png';
 import rideIcon from '../assets/win95.css/assets/icons/tree-1.png';
@@ -15,13 +16,19 @@ import trafficIcon from '../assets/win95.css/assets/icons/globe_map-0.png';
 import campaignIcon from '../assets/win95.css/assets/icons/mailbox_world-0.png';
 import pulseIcon from '../assets/win95.css/assets/icons/monitor_application.png';
 
-type RetroAppId = 'projectPark' | 'helpLab' | 'setupWizard';
+type RetroAppId = 'codeTycoon' | 'projectPark' | 'helpLab' | 'setupWizard';
 
 interface GamesFolderProps {
     onOpen: (id: RetroAppId) => void;
 }
 
 const games = [
+    {
+        id: 'codeTycoon' as RetroAppId,
+        title: 'Code Tycoon',
+        icon: codeTycoonIcon,
+        description: 'Build a software studio, ship releases and grow your team.',
+    },
     {
         id: 'projectPark' as RetroAppId,
         title: 'Project Park Tycoon',
@@ -141,6 +148,29 @@ function GamesFolder({ onOpen }: GamesFolderProps) {
                 <img src={folderIcon} alt="" />
                 <span>Open a tool to explore your project in a more visual way.</span>
             </div>
+        </div>
+    );
+}
+
+function CodeTycoon() {
+    return (
+        <div className="code-tycoon-embed">
+            <div className="code-tycoon-toolbar">
+                <span>Code Tycoon is running online.</span>
+                <a
+                    href="https://programming-game.rh-development.co.uk/game"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Open in new tab
+                </a>
+            </div>
+            <iframe
+                src="https://programming-game.rh-development.co.uk/game?embed=rh-development"
+                title="Play Code Tycoon"
+                allow="fullscreen"
+                referrerPolicy="strict-origin-when-cross-origin"
+            />
         </div>
     );
 }
@@ -397,5 +427,5 @@ function WizardOptions({
     );
 }
 
-export { GamesFolder, HelpLab, ProjectPark, SetupWizard, ToolsFolder };
+export { CodeTycoon, GamesFolder, HelpLab, ProjectPark, SetupWizard, ToolsFolder };
 export type { RetroAppId };
